@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+	<script>
+		const parallax = (ev, el, k) => {
+			const {x, y} = el.getBoundingClientRect();
+			const {clientX, clientY} = ev;
+			const offsetX = -(clientX - x) / k;
+			const offsetY = -(clientY - y) / k;
+			el.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+		};
+
+		window.addEventListener('mousemove', ev => {
+			parallax(ev, document.querySelector('div'), 10);
+			parallax(ev, document.querySelector('angle'), 50);
+		});
+	</script>
+	<style>
+		body {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-image: url(graphics/kv-bg.jpg);
+		}
+
+		div {
+			background-image: url(graphics/kv-laptop.png);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 100vmin;
+			height: 100vmin;
+		}
+
+		angle {
+			position: absolute;
+			z-index: -1;
+			opacity: 0.2;
+			border-radius: 40vmin;
+			background-color: lightgray;
+			width: 80vmin;
+			height: 80vmin;
+		}
+	</style>
+	<title></title>
+</head>
+<body>
+<div></div>
+<angle></angle>
+<!--		<svg>-->
+<!--			<path d="M103.034998,51.7123729 L121.259004,88.2146943 C125.699517,97.1089523 122.089043,107.91892 113.194785,112.359432 C110.704929,113.602508 107.960754,114.251334 105.177841,114.254938 L68.6351601,114.302272 C58.694043,114.315149 50.6247365,106.26672 50.6118597,96.325603 C50.6082223,93.5174819 51.2616448,90.7474588 52.5198845,88.2370027 L70.8385589,51.6873473 C75.2928927,42.8000031 86.1084597,39.2063381 94.9958039,43.6606719 C98.4756211,45.4047551 101.296326,48.2298486 103.034998,51.7123729 Z"-->
+<!--				  fill="#FCEDF6"></path>-->
+<!--		</svg>-->
+
+</body>
+</html>
